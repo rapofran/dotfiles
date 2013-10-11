@@ -8,3 +8,6 @@ frank:
   target: ~/.gitconfig
 - source: .vimrc
   target: ~/.vimrc
+- source: .irbrc
+  target: ~/.irbrc
+

@@ -18,7 +18,7 @@ function parse_git_branch {
 }
 
 export PS1=""
-USER_HOST="frank@frank-notebook"
+USER_HOST="frank@dev-frank"
 if [ $USER_HOST !=  "$(whoami)@$(hostname -f)" ]; then
     PS1="\u@\h"
     fi

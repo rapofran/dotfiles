@@ -16,7 +16,7 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # set a fancy prompt (non-color, overwrite the one in /etc/profile)
-PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+#PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 
 # Commented out, don't overwrite xterm -T "title" -n "icontitle" by default.
 # If this is an xterm set the title to user@host:dir
@@ -54,7 +54,36 @@ if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-no
   }
 fi
 
-alias sublime2="/home/frank/SublimeText2/sublime_text"
-alias sublime="/opt/sublime_text/sublime_text"
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export SVN_EDITOR=vim
+
+alias mysql='mysql -uroot -p'
+alias sublime2="/home/frank/Descargas/Sublime\ Text\ 2\ \(3\)/sublime_text"
+alias sublime="/opt/sublime_text/sublime_text"
+alias be="bundle exec"
+alias l="ls -lah"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+function parse_git_branch {
+    branch=$(git branch 2> /dev/null | grep "*" | sed -e s/^..//g)
+      if [[ -z ${branch} ]]; then
+            return
+              fi
+                echo " ["${branch}"]"
+}
+
+export PS1=""
+USER_HOST="frank@dev-frank"
+if [ $USER_HOST !=  "$(whoami)@$(hostname -f)" ]; then
+    PS1="\u@\h"
+    fi
+
+#PS1=$PS1"\w\$(parse_git_branch)\n$ "
+PS1=$PS1"\w\$(parse_git_branch)$ "
+
+settitle ()
+{
+   echo -ne "\033]0;${PWD/$HOME/~}\007"
+}
+PROMPT_COMMAND=settitle
+export PROMPT_COMMAND
