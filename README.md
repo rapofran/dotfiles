@@ -1,3 +1,3 @@
 dotfiles
 ========
-My dotfiles for Manjaro/xfce4
+My dot/config files for Manjaro/xfce4
