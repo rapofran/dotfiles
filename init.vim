@@ -68,10 +68,14 @@ vnoremap <C-s> :w<CR>
 :map <C-z> u
 :map <C-c> y
 :map <C-v> p
+:map <C-s> :w <Enter>
 :map <C-t> :tabnew <Enter>
 :map <C-f> /
 :map <F3> n
 :map <C-h> :%s/
+
+" nerdtree toggle
+map <C-n> :NERDTreeToggle<CR>
 
 " Initialize plugin system
 call plug#end()
